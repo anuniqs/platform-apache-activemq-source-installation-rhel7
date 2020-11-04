@@ -1,0 +1,1 @@
+# redhat-apache-activemq-source-installation
