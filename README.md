@@ -1,6 +1,4 @@
-# redhat-apache-activemq-source-installation
-
-Step 1: Update the system
+System update
 
 [root@localhost ~]# sudo yum install epel-release -y
 
@@ -9,16 +7,16 @@ Step 1: Update the system
 [root@localhost ~]# sudo shutdown -r now
 
 
-Step 2: Install OpenJDK
+Install OpenJDK
 
 [root@localhost ~]# java -version
 
 [root@localhost ~]# cd /opt
 
 
-Site address - https://archive.apache.org/dist/activemq/
+Download , extarct and softlink it
 
-Download , extarct and softlink it -
+Site address - https://archive.apache.org/dist/activemq/
 
 [root@localhost opt]# wget https://archive.apache.org/dist/activemq/5.16.0/apache-activemq-5.16.0-bin.tar.gz
 
@@ -40,46 +38,9 @@ Start it -
 [root@localhost activemq]# ./bin/activemq start
 
 
-[root@192 opt]# cd apache-activemq-5.16.0/
+[root@192 activemq]# sudo systemctl start firewalld
 
-[root@192 apache-activemq-5.16.0]# useradd activemq
-
-[root@192 apache-activemq-5.16.0]# chown -R activemq:activemq /opt/apache-activemq-5.16.0
-
-
-Step 4: Create a Systemd unit file for Apache ActiveMQ
-
-[root@192 apache-activemq-5.16.0]# nano /etc/systemd/system/activemq.service
-
-
-[Unit]
-Description=Apache ActiveMQ Message Broker
-After=network-online.target
-
-[Service]
-Type=forking
-
-User=activemq
-Group=activemq
-
-WorkingDirectory=/opt/apache-activemq-5.16.0/bin
-ExecStart=/opt/apache-activemq-5.16.0/bin/activemq start
-ExecStop=/opt/apache-activemq-5.16.0/bin/activemq stop
-Restart=on-abort
-
-
-[Install]
-WantedBy=multi-user.target
-
-
-[root@192 apache-activemq-5.16.0]# systemctl daemon-reload
-
-[root@192 apache-activemq-5.16.0]# systemctl start activemq.service
-
-[root@192 apache-activemq-5.16.0]# systemctl enable activemq.service
-
-[root@192 apache-activemq-5.16.0]# systemctl status activemq.service
-
+[root@192 activemq]# sudo systemctl status firewalld
 
 [root@localhost activemq]# sudo firewall-cmd --zone=public --permanent --add-port=8161/tcp
 
@@ -95,11 +56,3 @@ The username and password can be configured in the /opt/activemq/conf/jetty-real
 
 The IP and port can be configured in the /opt/activemq/conf/jetty.xml file.
 
-
-
-
-
-Java path activemq : 
-
-export JAVA_HOME=/opt/java-11
-PATH=${JAVA_HOME}:${JAVA_HOME}/bin:${JAVA_HOME}/lib:${MVN_HOME}:${MVN_HOME}/bin:${MVN_HOME}/lib:${ACTIVEMQ_HOME}:${ACTIVEMQ_HOME}/bin:${ACTIVEMQ_HOME}/lib:$HOME/.local/bin:$HOME/bin
