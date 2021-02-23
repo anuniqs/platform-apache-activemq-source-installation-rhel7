@@ -53,7 +53,7 @@ Apache ActiveMQ is an open source message broker written in Java together with a
 [root@localhost ~]# firewall-cmd --reload
 
 
-Now, point your web browser to http://172.16.0.68:8161/admin and log in using the default credentials.
+Now, point your web browser to http://172.16.0.0:8161/admin and log in using the default credentials.
 
 username: **admin**
 
