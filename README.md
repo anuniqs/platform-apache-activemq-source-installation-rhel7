@@ -18,7 +18,7 @@ Apache ActiveMQ is an open source message broker written in Java together with a
 [root@localhost ~]# cd /opt
 
 
-### Download , extarct and softlink it —
+### Download , extarct and softlink —
 
 **Site address -** https://archive.apache.org/dist/activemq/
 
@@ -31,7 +31,7 @@ Apache ActiveMQ is an open source message broker written in Java together with a
 [root@localhost opt]# ls -ltr
 
 
-### Control it —
+### Start and control —
 
 [root@localhost opt]# cd activemq/
 
@@ -44,6 +44,8 @@ Apache ActiveMQ is an open source message broker written in Java together with a
 [root@localhost activemq]# ./bin/activemq stop
 
 
+### Firewall control —
+
 [root@192 activemq]# sudo systemctl start firewalld
 
 [root@192 activemq]# sudo systemctl status firewalld
@@ -52,6 +54,8 @@ Apache ActiveMQ is an open source message broker written in Java together with a
 
 [root@localhost ~]# firewall-cmd --reload
 
+
+### Test on browser —
 
 Now, point your web browser to http://172.16.0.0:8161/admin and log in using the default credentials.
 
@@ -63,5 +67,5 @@ The username and password can be configured in the /opt/activemq/conf/jetty-real
 
 The IP and port can be configured in the /opt/activemq/conf/jetty.xml file.
 
-Note : Server's hostname should not have Underscore "_"
 
+**Note :** Server's hostname should not have Underscore "_"
