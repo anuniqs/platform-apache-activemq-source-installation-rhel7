@@ -37,6 +37,8 @@ Start it -
 
 [root@localhost activemq]# ./bin/activemq start
 
+[root@localhost activemq]# ./bin/activemq stop
+
 
 [root@192 activemq]# sudo systemctl start firewalld
 
