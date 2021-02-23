@@ -1,4 +1,8 @@
-System update
+### GYAN —
+
+Apache ActiveMQ is an open source message broker written in Java together with a full Java Message Service client. It provides "Enterprise Features" which in this case means fostering the communication from more than one client or server. 
+
+### System update —
 
 [root@localhost ~]# sudo yum install epel-release -y
 
@@ -7,16 +11,16 @@ System update
 [root@localhost ~]# sudo shutdown -r now
 
 
-Install OpenJDK
+### Install OpenJDK —
 
 [root@localhost ~]# java -version
 
 [root@localhost ~]# cd /opt
 
 
-Download , extarct and softlink it
+### Download , extarct and softlink it —
 
-Site address - https://archive.apache.org/dist/activemq/
+**Site address -** https://archive.apache.org/dist/activemq/
 
 [root@localhost opt]# wget https://archive.apache.org/dist/activemq/5.16.0/apache-activemq-5.16.0-bin.tar.gz
 
@@ -27,7 +31,7 @@ Site address - https://archive.apache.org/dist/activemq/
 [root@localhost opt]# ls -ltr
 
 
-Start it -
+### Control it —
 
 [root@localhost opt]# cd activemq/
 
@@ -51,11 +55,13 @@ Start it -
 
 Now, point your web browser to http://172.16.0.68:8161/admin and log in using the default credentials.
 
-username: admin
-password: admin
+username: **admin**
+
+password: **admin**
 
 The username and password can be configured in the /opt/activemq/conf/jetty-realm.properties file.
 
 The IP and port can be configured in the /opt/activemq/conf/jetty.xml file.
 
 Note : Server's hostname should not have Underscore "_"
+
